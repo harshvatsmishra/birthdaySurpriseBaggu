@@ -507,16 +507,56 @@ body {
   }
 }
 
+/* Curved "Puchhuu" SVG text */
+.curved-text-svg {
+  width: 280px;
+  height: 75px;
+  display: block;
+  margin: 0 auto 8px;
+  overflow: visible;
+}
+
+.curved-text-stroke {
+  font-family: 'Pacifico', cursive;
+  font-size: 38px;
+  fill: none;
+  stroke: white;
+  stroke-width: 8;
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+
+.curved-text-fill {
+  font-family: 'Pacifico', cursive;
+  font-size: 38px;
+  fill: #FF69B4;
+  stroke: none;
+  filter: drop-shadow(0 2px 6px rgba(255, 20, 147, 0.35));
+}
+
+/* Photo frame with white outline for transparent PNGs */
+.photo-frame {
+  position: relative;
+  display: inline-block;
+  filter:
+    drop-shadow(0 0 0 white)
+    drop-shadow(2px 0 0 white)
+    drop-shadow(-2px 0 0 white)
+    drop-shadow(0 2px 0 white)
+    drop-shadow(0 -2px 0 white)
+    drop-shadow(1px 1px 0 white)
+    drop-shadow(-1px -1px 0 white)
+    drop-shadow(1px -1px 0 white)
+    drop-shadow(-1px 1px 0 white)
+    drop-shadow(0 4px 12px rgba(255, 105, 180, 0.4));
+}
+
 .intro-image-reveal img {
   width: 220px;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 5px solid white;
-  box-shadow:
-    0 0 30px rgba(255, 105, 180, 0.4),
-    0 0 60px rgba(255, 105, 180, 0.2),
-    0 10px 40px rgba(0, 0, 0, 0.1);
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+  display: block;
 }
 
 .image-glow {
@@ -524,10 +564,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 105, 180, 0.3) 0%, transparent 70%);
+  width: 300px;
+  height: 380px;
+  border-radius: 40%;
+  background: radial-gradient(circle, rgba(255, 105, 180, 0.25) 0%, transparent 70%);
   animation: glowPulse 2s ease-in-out infinite;
 }
 
@@ -540,23 +580,24 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 280px;
-  height: 280px;
+  width: 320px;
+  height: 400px;
   transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 .image-sparkles span {
   position: absolute;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   animation: sparkleOrbit 3s linear infinite;
 }
 
 .image-sparkles span:nth-child(1) { top: 0; left: 50%; animation-delay: 0s; }
-.image-sparkles span:nth-child(2) { top: 25%; right: 0; animation-delay: 0.5s; }
-.image-sparkles span:nth-child(3) { bottom: 0; left: 50%; animation-delay: 1s; }
-.image-sparkles span:nth-child(4) { top: 25%; left: 0; animation-delay: 1.5s; }
-.image-sparkles span:nth-child(5) { top: 50%; right: 5%; animation-delay: 2s; }
-.image-sparkles span:nth-child(6) { bottom: 25%; left: 5%; animation-delay: 2.5s; }
+.image-sparkles span:nth-child(2) { top: 20%; right: 0; animation-delay: 0.5s; }
+.image-sparkles span:nth-child(3) { bottom: 5%; left: 50%; animation-delay: 1s; }
+.image-sparkles span:nth-child(4) { top: 20%; left: 0; animation-delay: 1.5s; }
+.image-sparkles span:nth-child(5) { top: 50%; right: 0; animation-delay: 2s; }
+.image-sparkles span:nth-child(6) { bottom: 20%; left: 0; animation-delay: 2.5s; }
 
 @keyframes sparkleOrbit {
   0%, 100% { opacity: 0.3; transform: scale(0.8); }
