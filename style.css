@@ -998,8 +998,9 @@ body {
   }
 
   .intro-image-reveal img {
-    width: 260px;
-    height: 260px;
+    width: 280px;
+    height: auto;
+    max-height: 400px;
   }
 }
 
