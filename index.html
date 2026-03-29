@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday Month Buggu! 🎂</title>
+  <meta name="description" content="A special birthday surprise for Deepika!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Hearts Background -->
+  <div id="hearts-bg" class="hearts-bg"></div>
+
+  <!-- ========== PASSWORD SCREEN ========== -->
+  <div id="password-screen" class="screen active">
+    <div class="password-container">
+      <div class="lock-icon">
+        <svg viewBox="0 0 64 64" width="80" height="80">
+          <defs>
+            <linearGradient id="lockGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#FF69B4"/>
+              <stop offset="100%" style="stop-color:#FF1493"/>
+            </linearGradient>
+          </defs>
+          <path d="M32 4 C20 4 14 14 14 22 L14 28 C10 28 8 30 8 34 L8 54 C8 58 10 60 14 60 L50 60 C54 60 56 58 56 54 L56 34 C56 30 54 28 50 28 L50 22 C50 14 44 4 32 4Z M22 22 C22 16 26 12 32 12 C38 12 42 16 42 22 L42 28 L22 28Z" fill="url(#lockGrad)"/>
+          <circle cx="32" cy="44" r="5" fill="white"/>
+          <rect x="30" y="44" width="4" height="8" rx="2" fill="white"/>
+        </svg>
+      </div>
+      <h1 class="password-title">Heyy Buggu! 💖</h1>
+      <p class="password-subtitle">Only you know the magic word to unlock this surprise ✨</p>
+      <div class="input-wrapper" id="input-wrapper">
+        <span class="input-icon">💕</span>
+        <input
+          type="password"
+          id="password-input"
+          class="password-input"
+          placeholder="Type the magic word..."
+          autocomplete="off"
+          autofocus
+        />
+        <button id="toggle-password" class="toggle-password" aria-label="Toggle password visibility">
+          <span id="eye-icon">👁️</span>
+        </button>
+      </div>
+      <button id="unlock-btn" class="unlock-btn">
+        <span>Unlock My Surprise</span>
+        <span class="btn-sparkle">✨</span>
+      </button>
+      <p class="hint-text" id="hint-text"></p>
+      <div class="password-hearts">
+        <span>💗</span><span>💖</span><span>💕</span><span>💗</span><span>💖</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== INTRO ANIMATION SCREEN ========== -->
+  <div id="intro-screen" class="screen">
+    <div class="intro-container">
+      <div class="intro-text-wrapper">
+        <div class="intro-word" id="word-its">Its</div>
+        <div class="intro-word" id="word-your">your</div>
+        <div class="intro-word" id="word-bday">B'Day</div>
+        <div class="intro-word" id="word-month">Month</div>
+      </div>
+      <div class="intro-emoji-burst" id="emoji-burst"></div>
+      <div class="intro-image-reveal" id="image-reveal">
+        <div class="image-glow"></div>
+        <img src="her-photo.png" alt="Deepika" id="birthday-girl-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><circle cx=%22100%22 cy=%2280%22 r=%2245%22 fill=%22%23FFB6C1%22/><ellipse cx=%22100%22 cy=%22170%22 rx=%2260%22 ry=%2245%22 fill=%22%23FFB6C1%22/><text x=%22100%22 y=%2285%22 text-anchor=%22middle%22 font-size=%2220%22>👸</text></svg>'"/>
+        <div class="image-sparkles">
+          <span>✨</span><span>⭐</span><span>✨</span><span>💫</span><span>⭐</span><span>✨</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== HOME SCREEN ========== -->
+  <div id="home-screen" class="screen">
+    <div class="home-container">
+      <header class="home-header">
+        <div class="header-decoration">🎀</div>
+        <h1 class="home-title">Buggu's Birthday Month</h1>
+        <p class="home-subtitle">Weekly surprises just for you, Deepika! 🎁</p>
+        <div class="countdown-to-bday">
+          <span class="bday-label">Buggu's Birthday in</span>
+          <span class="bday-countdown" id="bday-countdown">--</span>
+        </div>
+      </header>
+
+      <div class="weeks-grid">
+        <!-- Week 1 -->
+        <div class="week-tile" id="week-1" data-week="1">
+          <div class="tile-glow"></div>
+          <div class="tile-content">
+            <div class="tile-header">
+              <span class="week-emoji">🌸</span>
+              <span class="week-number">Week 1 — First Surprise 💌</span>
+            </div>
+            <div class="tile-date">Apr 1 — Apr 7</div>
+            <div class="tile-status">
+              <span class="status-icon" id="status-1">🔒</span>
+              <span class="status-text" id="status-text-1">Loading...</span>
+            </div>
+            <div class="tile-timer" id="timer-1"></div>
+          </div>
+          <div class="tile-shimmer"></div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="week-tile" id="week-2" data-week="2">
+          <div class="tile-glow"></div>
+          <div class="tile-content">
+            <div class="tile-header">
+              <span class="week-emoji">💕</span>
+              <span class="week-number">Week 2 — More Love 💌</span>
+            </div>
+            <div class="tile-date">Apr 8 — Apr 14</div>
+            <div class="tile-status">
+              <span class="status-icon" id="status-2">🔒</span>
+              <span class="status-text" id="status-text-2">Loading...</span>
+            </div>
+            <div class="tile-timer" id="timer-2"></div>
+          </div>
+          <div class="tile-shimmer"></div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="week-tile" id="week-3" data-week="3">
+          <div class="tile-glow"></div>
+          <div class="tile-content">
+            <div class="tile-header">
+              <span class="week-emoji">🎀</span>
+              <span class="week-number">Week 3 — Almost There 💌</span>
+            </div>
+            <div class="tile-date">Apr 15 — Apr 21</div>
+            <div class="tile-status">
+              <span class="status-icon" id="status-3">🔒</span>
+              <span class="status-text" id="status-text-3">Loading...</span>
+            </div>
+            <div class="tile-timer" id="timer-3"></div>
+          </div>
+          <div class="tile-shimmer"></div>
+        </div>
+
+        <!-- Week 4 (Birthday Week!) -->
+        <div class="week-tile birthday-week" id="week-4" data-week="4">
+          <div class="tile-glow"></div>
+          <div class="tile-content">
+            <div class="tile-header">
+              <span class="week-emoji">🎂</span>
+              <span class="week-number">Week 4 — The Grand Day 💌</span>
+            </div>
+            <div class="tile-date">Apr 22 — Apr 26 🎉</div>
+            <div class="tile-status">
+              <span class="status-icon" id="status-4">🔒</span>
+              <span class="status-text" id="status-text-4">Loading...</span>
+            </div>
+            <div class="tile-timer" id="timer-4"></div>
+          </div>
+          <div class="tile-shimmer"></div>
+          <div class="birthday-badge">🎂 Birthday Week!</div>
+        </div>
+      </div>
+
+      <footer class="home-footer">
+        <p>Made with 💖 for my Buggu</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ========== WEEK DETAIL OVERLAY ========== -->
+  <div id="week-detail" class="screen overlay">
+    <div class="detail-container">
+      <button class="detail-close" id="detail-close">
+        <span>✕</span>
+      </button>
+      <div class="detail-header">
+        <span class="detail-emoji" id="detail-emoji">🌸</span>
+        <h2 class="detail-title" id="detail-title">Week 1</h2>
+        <p class="detail-date" id="detail-date">Mar 29 — Apr 4</p>
+      </div>
+      <div class="detail-content" id="detail-content">
+        <div class="detail-placeholder">
+          <span class="placeholder-icon">🎁</span>
+          <p>Buggu, your surprise content will appear here!</p>
+          <p class="placeholder-sub">Stay tuned Deepika, something special is coming... 💫</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
