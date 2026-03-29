@@ -70,7 +70,21 @@
       <div class="intro-emoji-burst" id="emoji-burst"></div>
       <div class="intro-image-reveal" id="image-reveal">
         <div class="image-glow"></div>
-        <img src="her-photo.png" alt="Deepika" id="birthday-girl-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><circle cx=%22100%22 cy=%2280%22 r=%2245%22 fill=%22%23FFB6C1%22/><ellipse cx=%22100%22 cy=%22170%22 rx=%2260%22 ry=%2245%22 fill=%22%23FFB6C1%22/><text x=%22100%22 y=%2285%22 text-anchor=%22middle%22 font-size=%2220%22>👸</text></svg>'"/>
+        <!-- Curved "Puchhuu" text above the image -->
+        <svg class="curved-text-svg" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path id="curve" d="M 30,70 Q 150,0 270,70" fill="transparent"/>
+          </defs>
+          <text class="curved-text-stroke">
+            <textPath href="#curve" startOffset="50%" text-anchor="middle">Puchhuu ✨</textPath>
+          </text>
+          <text class="curved-text-fill">
+            <textPath href="#curve" startOffset="50%" text-anchor="middle">Puchhuu ✨</textPath>
+          </text>
+        </svg>
+        <div class="photo-frame">
+          <img src="her-photo.png" alt="Deepika" id="birthday-girl-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><circle cx=%22100%22 cy=%2280%22 r=%2245%22 fill=%22%23FFB6C1%22/><ellipse cx=%22100%22 cy=%22170%22 rx=%2260%22 ry=%2245%22 fill=%22%23FFB6C1%22/><text x=%22100%22 y=%2285%22 text-anchor=%22middle%22 font-size=%2220%22>👸</text></svg>'"/>
+        </div>
         <div class="image-sparkles">
           <span>✨</span><span>⭐</span><span>✨</span><span>💫</span><span>⭐</span><span>✨</span>
         </div>
