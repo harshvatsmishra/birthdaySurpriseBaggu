@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Week 1 — Shopping Date 🛍️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ===== GAME VIEWPORT ===== -->
+  <div id="game" class="game">
+
+    <!-- Background Scene -->
+    <div id="scene-bg" class="scene-bg scene-street">
+      <div class="bg-buildings"></div>
+      <div class="bg-ground"></div>
+    </div>
+
+    <!-- Hint Bar -->
+    <div id="hint-bar" class="hint-bar">
+      <span id="hint-icon">💡</span>
+      <span id="hint-text">Tap to continue...</span>
+    </div>
+
+    <!-- Characters -->
+    <div id="characters" class="characters">
+      <div class="character boy" id="char-boy">
+        <div class="char-body">
+          <div class="char-head boy-head">
+            <img src="../week1-assets/boy-photo.png" alt="Boy" class="char-photo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="char-photo-fallback">🧑</div>
+          </div>
+          <div class="char-torso boy-torso"></div>
+          <div class="char-legs">
+            <div class="leg left-leg"></div>
+            <div class="leg right-leg"></div>
+          </div>
+        </div>
+        <div class="char-name">HVM 💙</div>
+      </div>
+
+      <div class="character girl" id="char-girl">
+        <div class="char-body">
+          <div class="char-head girl-head">
+            <img src="../week1-assets/girl-photo.png" alt="Buggu" class="char-photo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="char-photo-fallback">👩</div>
+          </div>
+          <div class="char-torso girl-torso"></div>
+          <div class="char-legs">
+            <div class="leg left-leg"></div>
+            <div class="leg right-leg"></div>
+          </div>
+        </div>
+        <div class="char-name">Buggu 💖</div>
+      </div>
+    </div>
+
+    <!-- Dialogue Bubble -->
+    <div id="dialogue-area" class="dialogue-area hidden">
+      <div class="dialogue-bubble" id="dialogue-bubble">
+        <div class="dialogue-speaker" id="dialogue-speaker">HVM</div>
+        <div class="dialogue-text" id="dialogue-text"></div>
+      </div>
+    </div>
+
+    <!-- Choice Buttons -->
+    <div id="choice-area" class="choice-area hidden">
+      <button class="choice-btn" id="choice-1"></button>
+      <button class="choice-btn" id="choice-2"></button>
+    </div>
+
+    <!-- Image Popup Overlay -->
+    <div id="popup-overlay" class="popup-overlay hidden">
+      <div class="popup-content">
+        <img id="popup-img" src="" alt="Reaction">
+        <div class="popup-text" id="popup-text">Yayyy 🎉</div>
+        <button class="popup-close-btn" id="popup-close">Continue ✨</button>
+      </div>
+    </div>
+
+    <!-- Video Player Overlay -->
+    <div id="video-overlay" class="video-overlay hidden">
+      <div class="video-screen">
+        <div class="screen-frame">
+          <video id="game-video" controls playsinline>
+            <source src="../week1-assets/week1-video.mp4" type="video/mp4">
+            Your browser does not support video.
+          </video>
+        </div>
+        <button class="video-done-btn hidden" id="video-done">Done watching ✨</button>
+      </div>
+    </div>
+
+    <!-- Letter Overlay -->
+    <div id="letter-overlay" class="letter-overlay hidden">
+      <div class="letter-paper">
+        <div class="letter-header">💌 A Letter For You</div>
+        <div class="letter-body" id="letter-body">
+          <!-- LETTER CONTENT — EDIT THIS -->
+          <p>Dear Buggu,</p>
+          <p>Its your birthday month and I am excitedddd...</p>
+          <p>I cant express in words how special you are for me, the connection I felt with you the very first moment
+            and the way we connected is magical.</p>
+          <p>I wish I was there with you to make it special but I am here to add fragrance to your closet which is
+            nothing compared to fragrance you added to my life... 🛍️✨
+          </p>
+          <p class="letter-sign">— With all my love ❤️</p>
+        </div>
+        <button class="letter-close-btn" id="letter-close">Close Letter 💕</button>
+      </div>
+    </div>
+
+    <!-- Shopping Rack -->
+    <div id="shop-overlay" class="shop-overlay hidden">
+      <div class="shop-container">
+        <div class="shop-header">
+          <h2 class="shop-title">✨ Fragrance Collection ✨</h2>
+          <p class="shop-subtitle">Pick your favourites, Buggu!</p>
+        </div>
+        <div class="perfume-rack" id="perfume-rack">
+          <!-- Perfume bottles populated by JS -->
+        </div>
+        <div class="shop-hint">💡 Tap a perfume to see details & add to cart</div>
+      </div>
+
+      <!-- Cart Button -->
+      <button class="cart-btn" id="cart-btn">
+        🛒 <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+
+    <!-- Perfume Detail Modal -->
+    <div id="perfume-modal" class="perfume-modal hidden">
+      <div class="perfume-modal-content">
+        <button class="modal-close" id="perfume-modal-close">✕</button>
+        <img class="perfume-modal-img" id="perfume-modal-img" src="" alt="Perfume">
+        <h3 class="perfume-modal-name" id="perfume-modal-name"></h3>
+        <p class="perfume-modal-desc" id="perfume-modal-desc"></p>
+        <a class="perfume-modal-link" id="perfume-modal-link" href="#" target="_blank">Explore Fragrance</a>
+        <button class="add-to-cart-btn" id="add-to-cart-btn">Add to Cart 🛒</button>
+      </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal hidden">
+      <div class="cart-modal-content">
+        <button class="modal-close" id="cart-modal-close">✕</button>
+        <h3 class="cart-title">🛒 Your Cart</h3>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-total" id="cart-total"></div>
+        <button class="checkout-btn hidden" id="checkout-btn">Checkout 🎉</button>
+      </div>
+    </div>
+
+    <!-- Delivery Confirmation Modal -->
+    <div id="delivery-modal" class="delivery-modal hidden">
+      <div class="delivery-content">
+        <div class="delivery-icon">🎉</div>
+        <h3>Order Placed!</h3>
+        <img class="delivery-img" src="../week1-assets/delivery-bag.png" alt="Delivery"
+          onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 font-size=%2250%22>🛍️</text></svg>'">
+        <div class="delivery-details" id="delivery-details"></div>
+        <button class="delivery-close-btn" id="delivery-close">Close 💕</button>
+      </div>
+    </div>
+
+    <!-- Week Complete Screen -->
+    <div id="complete-screen" class="complete-screen hidden">
+      <div class="complete-content">
+        <div class="complete-emoji">🎉</div>
+        <h2>Week 1 Complete!</h2>
+        <p>Hope you enjoyed the shopping date, Buggu! 💖</p>
+        <p class="complete-sub">See you next week for more surprises ✨</p>
+        <button class="back-home-btn" id="back-home-btn">Back to Home 🏠</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="game.js"></script>
+</body>
+
+</html>
