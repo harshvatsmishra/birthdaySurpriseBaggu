@@ -437,11 +437,17 @@
       return;
     }
 
+    // Week 1 has its own interactive game page
+    if (week.week === 1) {
+      window.location.href = 'w1-surprise-q8xz9/index.html';
+      return;
+    }
+
     document.getElementById('detail-emoji').textContent = week.emoji;
     document.getElementById('detail-title').textContent = week.label;
     document.getElementById('detail-date').textContent = week.dateRange;
 
-    // Placeholder content — you can customize per week later
+    // Placeholder content for weeks 2-4
     document.getElementById('detail-content').innerHTML = `
       <div class="detail-placeholder">
         <span class="placeholder-icon">🎁</span>
