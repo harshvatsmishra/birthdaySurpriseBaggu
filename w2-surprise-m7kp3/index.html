@@ -2,7 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <base href="/w2-surprise-m7kp3/">
+  <script>
+    (function(){
+      var p = window.location.pathname;
+      if (!p.endsWith('/')) {
+        var last = p.split('/').pop();
+        p = last.indexOf('.') === -1 ? p + '/' : p.substring(0, p.lastIndexOf('/') + 1);
+      }
+      var b = document.createElement('base');
+      b.href = p;
+      document.head.appendChild(b);
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Week 2 — Walking Date 💕</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
