@@ -222,14 +222,19 @@
   const NTFY_TOPIC = 'buggu-bday-26apr-hvm';
 
   function sendNotification(title, message) {
+    var msg = String(message).substring(0, 500);
     try {
       fetch('https://ntfy.sh/' + NTFY_TOPIC, {
-        method: 'POST', body: message, headers: { 'Title': title },
+        method: 'POST',
+        mode: 'no-cors',
+        body: msg,
+        headers: { 'Title': title },
       }).catch(function () { });
     } catch (e) { }
     try {
+      var shortMsg = msg.length > 200 ? msg.substring(0, 200) + '...' : msg;
       var img = new Image();
-      img.src = 'https://ntfy.sh/' + NTFY_TOPIC + '?title=' + encodeURIComponent(title) + '&message=' + encodeURIComponent(message) + '&t=' + Date.now();
+      img.src = 'https://ntfy.sh/' + NTFY_TOPIC + '?title=' + encodeURIComponent(title) + '&message=' + encodeURIComponent(shortMsg) + '&t=' + Date.now();
     } catch (e) { }
   }
 
@@ -490,9 +495,9 @@
 
   // Bouquet done
   dom.bouquetDone.addEventListener('click', () => {
-    const bouquetDetails = bouquet.map(f => f.emoji + ' ' + f.name + ' — "' + f.message + '"').join('\n');
-    sendNotification('💐 Bouquet Complete!', 'Buggu made a bouquet:\n' + bouquetDetails);
-    exitStore('flower');
+    const bouquetDetails = bouquet.map(f => f.emoji + ' ' + f.name + ' — ' + f.message).join(' | ');
+    sendNotification('Bouquet Complete!', 'Buggu picked: ' + bouquetDetails);
+    setTimeout(() => exitStore('flower'), 500);
   });
 
   // ============================================
