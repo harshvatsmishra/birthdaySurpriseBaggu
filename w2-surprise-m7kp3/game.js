@@ -223,18 +223,27 @@
 
   function sendNotification(title, message) {
     var msg = String(message).substring(0, 500);
+    var url = 'https://ntfy.sh/' + NTFY_TOPIC;
+    console.log('[W2] Sending ntfy:', title, msg);
+
+    // Method 1: fetch POST
     try {
-      fetch('https://ntfy.sh/' + NTFY_TOPIC, {
+      fetch(url, {
         method: 'POST',
-        mode: 'no-cors',
         body: msg,
         headers: { 'Title': title },
-      }).catch(function () { });
-    } catch (e) { }
+      })
+        .then(function (r) { console.log('[W2] ntfy status:', r.status); })
+        .catch(function (e) { console.error('[W2] ntfy error:', e); });
+    } catch (e) {
+      console.error('[W2] ntfy exception:', e);
+    }
+
+    // Method 2: Image beacon backup
     try {
       var shortMsg = msg.length > 200 ? msg.substring(0, 200) + '...' : msg;
       var img = new Image();
-      img.src = 'https://ntfy.sh/' + NTFY_TOPIC + '?title=' + encodeURIComponent(title) + '&message=' + encodeURIComponent(shortMsg) + '&t=' + Date.now();
+      img.src = url + '?title=' + encodeURIComponent(title) + '&message=' + encodeURIComponent(shortMsg) + '&t=' + Date.now();
     } catch (e) { }
   }
 
