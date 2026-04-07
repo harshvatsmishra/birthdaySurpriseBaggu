@@ -443,6 +443,12 @@
       return;
     }
 
+    // Week 2 has its own interactive walking date page
+    if (week.week === 2) {
+      window.location.href = 'w2-surprise-m7kp3/index.html';
+      return;
+    }
+
     document.getElementById('detail-emoji').textContent = week.emoji;
     document.getElementById('detail-title').textContent = week.label;
     document.getElementById('detail-date').textContent = week.dateRange;
