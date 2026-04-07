@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="/w2-surprise-m7kp3/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Week 2 — Walking Date 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game" class="game">
+
+    <!-- Hint Bar -->
+    <div id="hint-bar" class="hint-bar">
+      <span>💡</span>
+      <span id="hint-text">Use the arrows to walk together 💕</span>
+    </div>
+
+    <!-- ===== STREET WORLD (scrollable) ===== -->
+    <div id="street-world" class="street-world">
+      <div class="sky-layer"></div>
+      <div class="ground-layer"></div>
+      <div class="road-layer"></div>
+
+      <!-- Trees / Decor -->
+      <div class="tree" style="left:80px;">🌳</div>
+      <div class="tree" style="left:680px;">🌲</div>
+      <div class="tree" style="left:1180px;">🌳</div>
+      <div class="tree" style="left:1680px;">🌲</div>
+      <div class="tree" style="left:2180px;">🌳</div>
+      <div class="tree" style="left:2680px;">🌲</div>
+      <div class="tree" style="left:3180px;">🌳</div>
+      <div class="lamp" style="left:250px;">🏮</div>
+      <div class="lamp" style="left:1100px;">🏮</div>
+      <div class="lamp" style="left:2050px;">🏮</div>
+      <div class="lamp" style="left:2850px;">🏮</div>
+      <div class="lamp" style="left:3600px;">🏮</div>
+
+      <!-- 1. Flower Shop -->
+      <div class="bldg bldg-flower" id="bldg-flower" style="left:360px;">
+        <div class="bldg-roof flower-roof"></div>
+        <div class="bldg-body flower-body">
+          <div class="bldg-sign">🌸 Flowers</div>
+          <div class="bldg-windows"><span>🌹</span><span>🌷</span></div>
+          <div class="bldg-door"><div class="door-handle"></div></div>
+        </div>
+        <div class="store-cloud" id="cloud-flower">Hey! Come pick some flowers! 🌹</div>
+      </div>
+
+      <!-- 2. Bookstore -->
+      <div class="bldg bldg-book" id="bldg-book" style="left:860px;">
+        <div class="bldg-roof book-roof"></div>
+        <div class="bldg-body book-body">
+          <div class="bldg-sign">📚 Books</div>
+          <div class="bldg-windows"><span>📖</span><span>📕</span></div>
+          <div class="bldg-door"><div class="door-handle"></div></div>
+        </div>
+        <div class="store-cloud" id="cloud-book">Best romantic reads inside! 📖</div>
+      </div>
+
+      <!-- 3. Restaurant -->
+      <div class="bldg bldg-restaurant" id="bldg-restaurant" style="left:1360px;">
+        <div class="bldg-roof restaurant-roof"></div>
+        <div class="bldg-body restaurant-body">
+          <div class="bldg-sign">🍜 Restaurant</div>
+          <div class="bldg-windows"><span>🥡</span><span>🍣</span></div>
+          <div class="bldg-door"><div class="door-handle"></div></div>
+        </div>
+        <div class="store-cloud" id="cloud-restaurant">Something delicious awaits! 🍜</div>
+      </div>
+
+      <!-- 4. Wishing Fountain -->
+      <div class="bldg bldg-fountain" id="bldg-fountain" style="left:1860px;">
+        <div class="fountain-struct">
+          <div class="fountain-top">⛲</div>
+          <div class="fountain-base-vis"></div>
+          <div class="fountain-water-vis"></div>
+        </div>
+        <div class="bldg-sign fountain-sign">⛲ Wishing Fountain</div>
+        <div class="store-cloud" id="cloud-fountain">Throw a coin, make a wish! ✨</div>
+      </div>
+
+      <!-- 5. Love Lock Bridge -->
+      <div class="bldg bldg-lock" id="bldg-lock" style="left:2360px;">
+        <div class="bridge-struct">
+          <div class="bridge-arch">🔒</div>
+          <div class="bridge-rail-vis"></div>
+          <div class="bridge-locks-vis">🔒🔐🔒🔐🔒</div>
+        </div>
+        <div class="bldg-sign bridge-sign">🔒 Love Locks</div>
+        <div class="store-cloud" id="cloud-lock">Lock your love forever! 💕</div>
+      </div>
+
+      <!-- 6. Cinema Hall -->
+      <div class="bldg bldg-cinema" id="bldg-cinema" style="left:2860px;">
+        <div class="bldg-roof cinema-roof"></div>
+        <div class="bldg-body cinema-body">
+          <div class="bldg-sign cinema-neon">🎬 Cinema</div>
+          <div class="bldg-windows"><span>🎞️</span><span>🍿</span></div>
+          <div class="bldg-door"><div class="door-handle"></div></div>
+        </div>
+        <div class="store-cloud" id="cloud-cinema">Showtime! Best movies inside! 🎬</div>
+      </div>
+
+      <!-- 7. Surprise Room -->
+      <div class="bldg bldg-surprise" id="bldg-surprise" style="left:3360px;">
+        <div class="bldg-roof surprise-roof"></div>
+        <div class="bldg-body surprise-body">
+          <div class="bldg-sign">✨ ???</div>
+          <div class="bldg-windows"><span>🕯️</span><span>🕯️</span></div>
+          <div class="bldg-door"><div class="door-handle"></div></div>
+        </div>
+        <div class="store-cloud" id="cloud-surprise">Something magical awaits... ✨</div>
+      </div>
+    </div>
+
+    <!-- ===== CHARACTERS (fixed on screen) ===== -->
+    <div id="characters" class="characters">
+      <div class="character boy" id="char-boy">
+        <div class="char-body">
+          <div class="char-head boy-head">
+            <img src="../week1-assets/boy-photo.png" alt="Boy" class="char-photo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="char-photo-fallback">🧑</div>
+          </div>
+          <div class="char-torso boy-torso"></div>
+          <div class="char-legs"><div class="leg left-leg"></div><div class="leg right-leg"></div></div>
+        </div>
+        <div class="char-name">HVM 💙</div>
+      </div>
+      <div class="character girl" id="char-girl">
+        <div class="char-body">
+          <div class="char-head girl-head">
+            <img src="../week1-assets/girl-photo.png" alt="Buggu" class="char-photo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="char-photo-fallback">👩</div>
+          </div>
+          <div class="char-torso girl-torso"></div>
+          <div class="char-legs"><div class="leg left-leg"></div><div class="leg right-leg"></div></div>
+        </div>
+        <div class="char-name">Buggu 💖</div>
+      </div>
+    </div>
+
+    <!-- Boy Dialogue Bubble -->
+    <div id="boy-dialogue" class="boy-dialogue hidden">
+      <div class="dialogue-bubble">
+        <div class="dialogue-speaker">HVM 💙</div>
+        <div class="dialogue-text" id="boy-dialogue-text"></div>
+      </div>
+    </div>
+
+    <!-- Enter Button -->
+    <div id="enter-area" class="enter-area hidden">
+      <button id="enter-btn" class="enter-btn">Enter 🚪</button>
+    </div>
+
+    <!-- Movement Controls -->
+    <div class="move-controls" id="move-controls">
+      <button class="move-btn" id="move-left"><span>◀</span></button>
+      <div class="move-label">Hold to walk 💕</div>
+      <button class="move-btn" id="move-right"><span>▶</span></button>
+    </div>
+
+    <!-- ===== INTRO OVERLAY ===== -->
+    <div id="intro-overlay" class="intro-overlay">
+      <div class="intro-content">
+        <div class="intro-icon">💕</div>
+        <div class="intro-bubble">
+          <div class="intro-speaker">HVM 💙</div>
+          <p class="intro-text" id="intro-text"></p>
+        </div>
+        <button class="intro-btn hidden" id="intro-btn">Let's Go! 💕</button>
+      </div>
+    </div>
+
+    <!-- ===== FLOWER SHOP OVERLAY ===== -->
+    <div id="overlay-flower" class="store-overlay hidden">
+      <div class="store-screen flower-screen">
+        <button class="store-back" data-store="flower">← Back to Street</button>
+        <h2 class="store-title">🌸 Flower Shop</h2>
+        <p class="store-sub">Pick flowers for your special bouquet, Buggu! 💐</p>
+        <div class="flower-grid" id="flower-grid"></div>
+        <div class="bouquet-area" id="bouquet-area">
+          <h3>💐 Your Bouquet</h3>
+          <div class="bouquet-list" id="bouquet-list"><p class="empty-msg">Tap flowers to add them!</p></div>
+          <button class="done-btn hidden" id="bouquet-done">Beautiful! Done 💕</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== BOOKSTORE OVERLAY ===== -->
+    <div id="overlay-book" class="store-overlay hidden">
+      <div class="store-screen book-screen">
+        <button class="store-back" data-store="book">← Back to Street</button>
+        <h2 class="store-title">📚 Bookstore</h2>
+        <p class="store-sub">Explore the most romantic books! 📖</p>
+        <div class="bookshelf" id="bookshelf"></div>
+      </div>
+    </div>
+
+    <!-- Book Reader -->
+    <div id="overlay-reader" class="reader-overlay hidden">
+      <div class="book-reader" id="book-reader">
+        <button class="reader-close" id="reader-close">✕</button>
+        <div class="book-cover-page" id="book-cover-page">
+          <h3 id="reader-title"></h3>
+          <p id="reader-author"></p>
+          <button class="open-btn" id="open-book">Open Book 📖</button>
+        </div>
+        <div class="book-page hidden" id="book-page">
+          <p class="quote-text" id="quote-text"></p>
+          <p class="quote-source" id="quote-source"></p>
+          <div class="page-nav">
+            <button class="page-btn" id="prev-page">◀</button>
+            <span class="page-num" id="page-num">1/4</span>
+            <button class="page-btn" id="next-page">▶</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== RESTAURANT OVERLAY ===== -->
+    <div id="overlay-restaurant" class="store-overlay hidden">
+      <div class="store-screen restaurant-screen-ov">
+        <button class="store-back" data-store="restaurant">← Back to Street</button>
+        <div class="placeholder-room">
+          <div class="placeholder-icon">🍜</div>
+          <h2>Something Special is Cooking!</h2>
+          <p>This restaurant is preparing a very special meal just for you, Buggu! 🧑‍🍳✨</p>
+        </div>
+        <div class="booking-section">
+          <h3 class="booking-title">📦 Book a Delivery Slot</h3>
+          <p class="booking-sub">Pick a date and time — we'll deliver something delicious to your door! 🛵💕</p>
+          <div class="booking-form">
+            <label class="booking-label">📅 Pick a Date</label>
+            <input type="date" id="booking-date" class="booking-input">
+            <label class="booking-label">⏰ Pick a Time Slot</label>
+            <div class="time-slots" id="time-slots">
+              <button class="time-slot-btn" data-slot="11:00 AM - 12:00 PM">🌅 11 AM – 12 PM</button>
+              <button class="time-slot-btn" data-slot="1:00 PM - 2:00 PM">☀️ 1 PM – 2 PM</button>
+              <button class="time-slot-btn" data-slot="6:00 PM - 7:00 PM">🌆 6 PM – 7 PM</button>
+              <button class="time-slot-btn" data-slot="8:00 PM - 9:00 PM">🌙 8 PM – 9 PM</button>
+            </div>
+            <button class="done-btn hidden" id="booking-confirm">Confirm Booking 🍜💕</button>
+          </div>
+          <div class="booking-done hidden" id="booking-done">
+            <div class="booking-done-icon">✅</div>
+            <p class="booking-done-text">Your delivery is booked, Buggu! 🎉</p>
+            <p class="booking-done-detail" id="booking-summary"></p>
+            <button class="done-btn" id="booking-exit">Yay! 💕</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== WISHING FOUNTAIN OVERLAY ===== -->
+    <div id="overlay-fountain" class="store-overlay hidden">
+      <div class="store-screen fountain-screen">
+        <button class="store-back" data-store="fountain">← Back to Street</button>
+        <h2 class="store-title">⛲ Wishing Fountain</h2>
+        <p class="store-sub">Throw a coin and make a wish together! ✨</p>
+        <div class="fountain-scene" id="fountain-scene">
+          <div class="fountain-visual">⛲</div>
+        </div>
+        <div class="coins-row" id="coins-row"></div>
+        <div class="wish-display hidden" id="wish-display">
+          <p class="wish-text" id="wish-text"></p>
+        </div>
+        <button class="done-btn hidden" id="fountain-done">Done Wishing 💕</button>
+      </div>
+    </div>
+
+    <!-- ===== LOVE LOCK BRIDGE OVERLAY ===== -->
+    <div id="overlay-lock" class="store-overlay hidden">
+      <div class="store-screen lock-screen-ov">
+        <button class="store-back" data-store="lock">← Back to Street</button>
+        <h2 class="store-title">🔒 Love Lock Bridge</h2>
+        <p class="store-sub">Lock your love forever! 💕</p>
+        <div class="bridge-visual" id="bridge-visual">
+          <div class="bridge-rail-ov" id="bridge-rail-ov">
+            <span class="existing-lock" style="left:10%;top:20%">🔒</span>
+            <span class="existing-lock" style="left:25%;top:50%">🔐</span>
+            <span class="existing-lock" style="left:55%;top:30%">🔒</span>
+            <span class="existing-lock" style="left:75%;top:60%">🔐</span>
+            <span class="existing-lock" style="left:40%;top:70%">🔒</span>
+          </div>
+        </div>
+        <div class="lock-controls" id="lock-controls">
+          <p>Pick your lock color:</p>
+          <div class="color-picks" id="color-picks"></div>
+          <button class="lock-place-btn hidden" id="lock-place-btn">Place Our Lock 🔒💕</button>
+        </div>
+        <div class="lock-done hidden" id="lock-done">
+          <div class="lock-placed-icon" id="lock-placed-icon">🔒</div>
+          <p class="lock-engraved">H ❤️ D — Forever</p>
+          <button class="done-btn" id="lock-done-btn">Beautiful! 💕</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CINEMA HALL OVERLAY ===== -->
+    <div id="overlay-cinema" class="store-overlay hidden">
+      <div class="store-screen cinema-screen-ov">
+        <button class="store-back" data-store="cinema">← Back to Street</button>
+        <h2 class="store-title">🎬 Cinema Hall</h2>
+        <p class="store-sub">Pick a movie to watch together! 🍿</p>
+        <div class="movie-list" id="movie-list"></div>
+        <div class="theater-view hidden" id="theater-view">
+          <div class="screen-frame">
+            <video id="cinema-video" controls playsinline></video>
+          </div>
+          <div class="theater-seats-ov">
+            <span class="seat-char">🧑</span>
+            <span class="seat-char">👩</span>
+          </div>
+          <button class="done-btn hidden" id="cinema-done">Done Watching ✨</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SURPRISE ROOM OVERLAY ===== -->
+    <div id="overlay-surprise" class="store-overlay hidden">
+      <div class="store-screen surprise-screen-ov">
+        <button class="store-back" data-store="surprise">← Back to Street</button>
+        <div class="glass-room">
+          <div class="candle-row">
+            <div class="candle-item"><div class="flame"></div><div class="wax"></div></div>
+            <div class="candle-item"><div class="flame"></div><div class="wax"></div></div>
+            <div class="candle-item"><div class="flame"></div><div class="wax"></div></div>
+            <div class="candle-item"><div class="flame"></div><div class="wax"></div></div>
+            <div class="candle-item"><div class="flame"></div><div class="wax"></div></div>
+            <div class="candle-item"><div class="flame"></div><div class="wax"></div></div>
+          </div>
+          <h2 class="surprise-title">✨ A Room Made Just For You ✨</h2>
+          <p class="surprise-sub">Tap on photos & letters to explore 💕</p>
+          <div class="hanging-grid" id="hanging-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo / Letter Viewer -->
+    <div id="viewer-overlay" class="viewer-overlay hidden">
+      <div class="viewer-box" id="viewer-box"></div>
+      <button class="viewer-close" id="viewer-close">Close 💕</button>
+    </div>
+
+    <!-- ===== WEEK COMPLETE ===== -->
+    <div id="complete-screen" class="complete-screen hidden">
+      <div class="complete-content">
+        <div class="complete-emoji">🎉</div>
+        <h2>Week 2 Complete!</h2>
+        <p>Hope you enjoyed our walking date, Buggu! 💖</p>
+        <p class="complete-sub">See you next week for more surprises ✨</p>
+        <button class="back-home-btn" id="back-home-btn">Back to Home 🏠</button>
+      </div>
+    </div>
+
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
