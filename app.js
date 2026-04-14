@@ -449,6 +449,12 @@
       return;
     }
 
+    // Week 3 Time Machine page
+    if (week.week === 3) {
+      window.location.href = 'w3-surprise-p3k9q/index.html';
+      return;
+    }
+
     document.getElementById('detail-emoji').textContent = week.emoji;
     document.getElementById('detail-title').textContent = week.label;
     document.getElementById('detail-date').textContent = week.dateRange;
