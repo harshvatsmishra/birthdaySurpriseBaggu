@@ -125,7 +125,7 @@ const constellationsData = [
     id: 2,
     title: "The Perfect Match",
     text: "Like two puzzle pieces meant to be together. We just fit, Buggu. 🧩💖",
-    points: [{ x: 50, y: 65 }, { x: 60, y: 90 }, { x: 35, y: 75 }, { x: 65, y: 75 }, { x: 40, y: 90 }],
+    points: [{ x: 50, y: 57 }, { x: 60, y: 82 }, { x: 35, y: 67 }, { x: 65, y: 67 }, { x: 40, y: 82 }],
     found: false,
     nodes: []
   }
@@ -459,7 +459,7 @@ function checkFutureCompletion() {
           document.getElementById('selected-promise-text').textContent = "Your choice: " + choiceText;
 
           // Send response to ntfy!
-          sendNtfyMessage('Week 3 Surprise Pick! 🎟️', 'Buggu selected to redeem: ' + choiceText);
+          sendNtfyMessage('Week 3 Surprise Pick!', 'Buggu selected to redeem: ' + choiceText);
 
           showScreen('finale');
         });
