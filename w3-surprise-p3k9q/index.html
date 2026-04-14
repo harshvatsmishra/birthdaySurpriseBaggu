@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Week 3: The Time Machine ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Floating Sparkles Background -->
+  <div id="sparkle-bg"></div>
+
+  <!-- ========== HUB SCREEN ========== -->
+  <div id="hub-screen" class="screen active">
+    <!-- Floating Polaroids Background -->
+    <div id="photo-bg"></div>
+    <div class="hub-container">
+      <h1 class="hub-title">The Digital Nexus ✨</h1>
+      <p class="hub-subtitle">Welcome to Week 3, Buggu! Choose your destination in time...</p>
+
+      <div class="portal-grid">
+        <div class="portal-btn" id="portal-past">
+          <div class="portal-icon">🌌</div>
+          <div class="portal-text">Stars Aligned and I Found You</div>
+        </div>
+
+        <div class="portal-btn locked" id="portal-playlist">
+          <a href="https://open.spotify.com/playlist/3ERvxNlaIVNt5DohzYqsnF?si=evJhM004QUCT33AAcBruqQ&pi=lX8DgeK6TSaHq"
+            target="_blank" style="text-decoration: none; color: inherit; display: contents;">
+            <div class="portal-icon">🎧</div>
+            <div class="portal-text">You Through My Eyes</div>
+          </a>
+          <div class="portal-lock">🔒</div>
+        </div>
+
+        <div class="portal-btn locked" id="portal-future">
+          <div class="portal-icon">🎟️</div>
+          <div class="portal-text">Looking to Our Future</div>
+          <div class="portal-lock">🔒</div>
+        </div>
+      </div>
+
+      <button class="back-home-btn" id="hub-back-btn" aria-label="Back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF69B4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========== STARRY NIGHT SCREEN (IDEA 1) ========== -->
+  <div id="starry-screen" class="screen">
+    <button class="back-btn" id="starry-back-btn" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FF69B4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </button>
+    <div class="starry-instructions">Tap the stars to complete the patterns... ✨</div>
+
+    <!-- SVG overlay for drawing lines between stars -->
+    <svg id="star-lines" class="star-lines"></svg>
+
+    <!-- Container for clickable stars -->
+    <div id="stars-container" class="stars-container"></div>
+
+    <!-- Active Constellation Modal -->
+    <div id="memory-modal" class="modal hidden">
+      <div class="modal-content glass">
+        <h2 id="memory-title">Memory Found!</h2>
+        <p id="memory-text">A beautiful memory...</p>
+        <button id="memory-close" class="primary-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SCRATCH-OFF SCREEN (IDEA 5) ========== -->
+  <div id="scratch-screen" class="screen">
+    <button class="back-btn" id="scratch-back-btn" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FF69B4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </button>
+    <div class="scratch-header">
+      <h1 class="scratch-title">Future Promises 🎟️</h1>
+      <p class="scratch-subtitle">Scratch off the silver layer to reveal your upcoming surprises!</p>
+    </div>
+
+    <div class="scratch-grid">
+      <!-- Cards will be injected by JS -->
+    </div>
+  </div>
+
+  <!-- ========== CUSTOM ALERT MODAL ========== -->
+  <div id="alert-modal" class="modal hidden" style="z-index: 1000;">
+    <div class="modal-content glass">
+      <p id="alert-text" style="font-size: 1.3rem; font-weight: bold; color: var(--primary-pink); margin-bottom: 20px;">
+        Message</p>
+      <button class="primary-btn" onclick="document.getElementById('alert-modal').classList.add('hidden')">Okay
+        ✨</button>
+    </div>
+  </div>
+
+  <!-- ========== FINALE SCREEN ========== -->
+  <div id="finale-screen" class="screen modal-overlay">
+    <div class="finale-content glass" id="finale-main-content">
+      <h2 id="finale-title">Great Choice! ✨</h2>
+      <p id="selected-promise-text"
+        style="font-weight: bold; color: var(--deep-pink); margin-bottom: 20px; font-size:1.2rem;">You selected a
+        surprise!</p>
+      <p style="margin-bottom: 20px;">Hold your thumb on the scanner for 3 seconds...</p>
+
+      <div id="fingerprint-container">
+        <div id="hold-progress"></div>
+        <div id="fingerprint-btn">👆</div>
+      </div>
+    </div>
+
+    <!-- Hidden Letter Container -->
+    <div class="letter-container hidden glass" id="letter-content">
+      <h2 class="letter-title">My Dearest Buggu,</h2>
+      <p class="letter-body">
+        As we get closer to your big day, I just want you to know how much you mean to me.
+        Every memory and every promise in this digital world is just a small
+        reflection of my love for you. I cant wait to create my most beautiful memories with you.
+        I want to have you by my side in my every highs and be the reason for your smile in your every lows.
+        I loveeeee youuuu a lottttt and will alwaysss love the same wayyyy.
+        <br><br>
+        Thank you for being mine, my present, and my beautiful future. I can't wait for what's next.
+        <br><br>
+        Yours always,<br>
+        <strong>Puchhuu 💖</strong>
+      </p>
+      <button class="primary-btn" id="finale-btn">Return Home</button>
+    </div>
+
+    <!-- White Flash overlay for transition -->
+    <div id="flash-overlay"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
